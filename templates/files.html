@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Files | VaultSphere</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/files.css') }}">
+
+</head>
+
+
+<body>
+
+<div class="dashboard-layout">
+
+    {% include 'components/sidebar.html' %}
+
+
+    <main class="main-content">
+
+        <!-- HEADER -->
+
+        <header class="page-header">
+
+            <div>
+
+                <span class="page-label">
+                    VAULTSPHERE
+                </span>
+
+                <h1>My Files</h1>
+
+                <p>
+                    Manage your personal cloud files.
+                </p>
+
+            </div>
+
+        </header>
+
+
+        <!-- FLASH MESSAGES -->
+
+        {% with messages = get_flashed_messages(
+            with_categories=true
+        ) %}
+
+            {% if messages %}
+
+                <div class="flash-container">
+
+                    {% for category, message in messages %}
+
+                        <div class="flash {{ category }}">
+
+                            {% if category == "success" %}
+
+                                <i class="fa-solid fa-circle-check"></i>
+
+                            {% else %}
+
+                                <i class="fa-solid fa-circle-exclamation"></i>
+
+                            {% endif %}
+
+                            {{ message }}
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% endif %}
+
+        {% endwith %}
+
+
+        <!-- STATS -->
+
+        <section class="file-stats">
+
+            <div class="file-stat">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-folder"></i>
+                </div>
+
+                <div>
+
+                    <span>Total Files</span>
+
+                    <strong>
+                        {{ total_files }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="file-stat">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-hard-drive"></i>
+                </div>
+
+                <div>
+
+                    <span>Storage Used</span>
+
+                    <strong>
+                        {{ "%.2f"|format(total_size / 1024 / 1024) }} MB
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TOOLBAR -->
+
+        <section class="file-toolbar">
+
+            <!-- SEARCH -->
+
+            <form method="GET"
+                  action="{{ url_for('files.files') }}"
+                  class="search-form">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    name="search"
+                    value="{{ search }}"
+                    placeholder="Search your files..."
+                >
+
+                {% if search %}
+
+                    <a href="{{ url_for('files.files') }}"
+                       class="clear-search">
+
+                        <i class="fa-solid fa-xmark"></i>
+
+                    </a>
+
+                {% endif %}
+
+            </form>
+
+
+            <!-- UPLOAD -->
+
+            <form
+                method="POST"
+                action="{{ url_for('files.upload') }}"
+                enctype="multipart/form-data"
+                class="upload-form"
+                id="uploadForm">
+
+                <input
+                    type="file"
+                    name="file"
+                    id="fileInput"
+                    hidden
+                    required
+                >
+
+                <button
+                    type="button"
+                    class="upload-button"
+                    onclick="document.getElementById('fileInput').click()">
+
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                    Upload File
+
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- FILE LIST -->
+
+        <section class="files-card">
+
+            <div class="files-card-header">
+
+                <div>
+
+                    <h2>
+                        Your Files
+                    </h2>
+
+                    <p>
+                        Files uploaded to your VaultSphere account
+                    </p>
+
+                </div>
+
+                <span class="file-count">
+                    {{ total_files }} files
+                </span>
+
+            </div>
+
+
+            {% if files %}
+
+                <div class="file-list">
+
+                    {% for file in files %}
+
+                        <div class="file-row">
+
+                            <!-- FILE ICON -->
+
+                            <div class="file-icon">
+
+                                {% if "image" in file.file_type %}
+
+                                    <i class="fa-solid fa-image"></i>
+
+                                {% elif "pdf" in file.file_type %}
+
+                                    <i class="fa-solid fa-file-pdf"></i>
+
+                                {% elif "word" in file.file_type %}
+
+                                    <i class="fa-solid fa-file-word"></i>
+
+                                {% elif "sheet" in file.file_type or "excel" in file.file_type %}
+
+                                    <i class="fa-solid fa-file-excel"></i>
+
+                                {% elif "zip" in file.file_type %}
+
+                                    <i class="fa-solid fa-file-zipper"></i>
+
+                                {% else %}
+
+                                    <i class="fa-solid fa-file"></i>
+
+                                {% endif %}
+
+                            </div>
+
+
+                            <!-- NAME -->
+
+                            <div class="file-info">
+
+                                <strong>
+                                    {{ file.original_name }}
+                                </strong>
+
+                                <span>
+                                    {{ file.file_type or "Unknown file" }}
+                                </span>
+
+                            </div>
+
+
+                            <!-- SIZE -->
+
+                            <div class="file-size">
+
+                                {{ "%.2f"|format(
+                                    file.file_size / 1024 / 1024
+                                ) }} MB
+
+                            </div>
+
+
+                            <!-- DATE -->
+
+                            <div class="file-date">
+
+                                {{ file.uploaded_at.strftime(
+                                    "%d %b %Y"
+                                ) }}
+
+                            </div>
+
+
+                            <!-- ACTIONS -->
+
+                            <div class="file-actions">
+
+                                <a
+                                    href="{{ url_for(
+                                        'files.download',
+                                        file_id=file.id
+                                    ) }}"
+                                    title="Download">
+
+                                    <i class="fa-solid fa-download"></i>
+
+                                </a>
+
+
+                                <form
+                                    method="POST"
+                                    action="{{ url_for(
+                                        'files.delete',
+                                        file_id=file.id
+                                    ) }}"
+                                    onsubmit="return confirm(
+                                        'Delete this file?'
+                                    );">
+
+                                    <button
+                                        type="submit"
+                                        title="Delete">
+
+                                        <i class="fa-solid fa-trash"></i>
+
+                                    </button>
+
+                                </form>
+
+                            </div>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <div class="empty-files">
+
+                    <div class="empty-icon">
+
+                        <i class="fa-solid fa-folder-open"></i>
+
+                    </div>
+
+                    {% if search %}
+
+                        <h3>
+                            No files found
+                        </h3>
+
+                        <p>
+                            No files match "{{ search }}".
+                        </p>
+
+                    {% else %}
+
+                        <h3>
+                            Your vault is empty
+                        </h3>
+
+                        <p>
+                            Upload your first file to start
+                            using VaultSphere.
+                        </p>
+
+                    {% endif %}
+
+                    <button
+                        class="empty-upload"
+                        onclick="document.getElementById('fileInput').click()">
+
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                        Upload File
+
+                    </button>
+
+                </div>
+
+            {% endif %}
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script>
+
+const fileInput =
+    document.getElementById("fileInput");
+
+const uploadForm =
+    document.getElementById("uploadForm");
+
+
+fileInput.addEventListener(
+    "change",
+    function () {
+
+        if (this.files.length > 0) {
+
+            uploadForm.submit();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>

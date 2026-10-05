@@ -1,0 +1,734 @@
+x
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VaultSphere | Intelligent Cloud Storage</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<header class="navbar">
+
+    <div class="nav-container">
+
+        <a href="{{ url_for('home') }}" class="brand">
+
+            <div class="brand-icon">
+                <i class="fa-solid fa-cloud"></i>
+            </div>
+
+            <div class="brand-text">
+                <span>Vault</span><strong>Sphere</strong>
+            </div>
+
+        </a>
+
+        <nav class="nav-links">
+
+            <a href="#features">Features</a>
+            <a href="#security">Security</a>
+            <a href="#how-it-works">How It Works</a>
+
+<a href="{{ url_for('auth.login') }}"
+               class="login-link">
+                Login
+            </a>
+
+<a href="{{ url_for('auth.register') }}"
+               class="nav-button">
+                Get Started
+            </a>
+
+        </nav>
+
+        <button class="mobile-menu"
+                id="mobileMenu"
+                aria-label="Open menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     HERO SECTION
+========================= -->
+
+<main>
+
+<section class="hero">
+
+    <div class="hero-background"></div>
+
+    <div class="hero-container">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                Smart Cloud Storage
+            </div>
+
+            <h1>
+                Your Files.
+                <span>Your Cloud.</span>
+                Your Control.
+            </h1>
+
+            <p>
+                VaultSphere is an intelligent cloud storage and backup
+                platform designed to securely store, organize, protect,
+                and manage your digital files from anywhere.
+            </p>
+
+            <div class="hero-actions">
+
+<a href="{{ url_for('auth.register') }}">
+                   class="primary-button">
+
+                    <i class="fa-solid fa-rocket"></i>
+
+                    Get Started
+
+                </a>
+
+                <a href="#how-it-works"
+                   class="secondary-button">
+
+                    <i class="fa-solid fa-play"></i>
+
+                    See How It Works
+
+                </a>
+
+            </div>
+
+            <div class="hero-trust">
+
+                <div class="trust-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>Secure Storage</span>
+                </div>
+
+                <div class="trust-item">
+                    <i class="fa-solid fa-rotate"></i>
+                    <span>File Backup</span>
+                </div>
+
+                <div class="trust-item">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span>Version History</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CLOUD VISUAL -->
+
+        <div class="hero-visual">
+
+            <div class="orb orb-one"></div>
+            <div class="orb orb-two"></div>
+
+            <div class="cloud-card">
+
+                <div class="cloud-card-header">
+
+                    <div class="cloud-title">
+                        <i class="fa-solid fa-cloud"></i>
+
+                        <span>VaultSphere</span>
+                    </div>
+
+                    <div class="online-status">
+                        <span></span>
+                        Online
+                    </div>
+
+                </div>
+
+
+                <div class="storage-section">
+
+                    <div class="storage-icon">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                    </div>
+
+                    <div class="storage-info">
+
+                        <h3>Cloud Storage</h3>
+
+                        <p>
+                            Your files are protected and available
+                            anywhere.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="storage-bar">
+
+                    <div class="storage-progress"></div>
+
+                </div>
+
+                <div class="storage-details">
+
+                    <span>2.4 GB used</span>
+                    <span>10 GB available</span>
+
+                </div>
+
+
+                <div class="file-preview">
+
+                    <div class="file-item">
+
+                        <div class="file-icon pdf">
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </div>
+
+                        <div>
+                            <strong>Project_Report.pdf</strong>
+                            <small>2.1 MB</small>
+                        </div>
+
+                        <i class="fa-solid fa-check file-check"></i>
+
+                    </div>
+
+
+                    <div class="file-item">
+
+                        <div class="file-icon image">
+                            <i class="fa-solid fa-image"></i>
+                        </div>
+
+                        <div>
+                            <strong>Presentation.png</strong>
+                            <small>1.8 MB</small>
+                        </div>
+
+                        <i class="fa-solid fa-check file-check"></i>
+
+                    </div>
+
+
+                    <div class="file-item">
+
+                        <div class="file-icon document">
+                            <i class="fa-solid fa-file-lines"></i>
+                        </div>
+
+                        <div>
+                            <strong>Notes.docx</strong>
+                            <small>850 KB</small>
+                        </div>
+
+                        <i class="fa-solid fa-check file-check"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FEATURES
+========================= -->
+
+<section class="features" id="features">
+
+    <div class="section-container">
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                POWERFUL FEATURES
+            </span>
+
+            <h2>
+                Everything you need to
+                <span>manage your files.</span>
+            </h2>
+
+            <p>
+                VaultSphere combines secure storage, intelligent
+                organization, backup, and version control in one
+                simple platform.
+            </p>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+            <article class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                </div>
+
+                <h3>Cloud Storage</h3>
+
+                <p>
+                    Upload and access your files from anywhere
+                    with reliable cloud-based storage.
+                </p>
+
+            </article>
+
+
+            <article class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <h3>Secure Files</h3>
+
+                <p>
+                    Keep your personal files protected with
+                    authentication and user-specific access.
+                </p>
+
+            </article>
+
+
+            <article class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-rotate"></i>
+                </div>
+
+                <h3>Automatic Backup</h3>
+
+                <p>
+                    Protect important files with backup and
+                    recovery capabilities.
+                </p>
+
+            </article>
+
+
+            <article class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                </div>
+
+                <h3>Version Control</h3>
+
+                <p>
+                    Keep previous versions of your files and
+                    restore them whenever required.
+                </p>
+
+            </article>
+
+
+            <article class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+
+                <h3>Smart Search</h3>
+
+                <p>
+                    Find your files quickly using names,
+                    categories, and metadata.
+                </p>
+
+            </article>
+
+
+            <article class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+
+                <h3>AI Assistance</h3>
+
+                <p>
+                    Analyze supported documents and generate
+                    useful summaries using intelligent processing.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SECURITY
+========================= -->
+
+<section class="security" id="security">
+
+    <div class="section-container security-container">
+
+        <div class="security-visual">
+
+            <div class="security-circle">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+            </div>
+
+            <div class="security-card security-card-one">
+
+                <i class="fa-solid fa-lock"></i>
+
+                <span>Protected</span>
+
+            </div>
+
+            <div class="security-card security-card-two">
+
+                <i class="fa-solid fa-user-shield"></i>
+
+                <span>Private Access</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="security-content">
+
+            <span class="section-label">
+                SECURITY FIRST
+            </span>
+
+            <h2>
+                Your data belongs
+                <span>to you.</span>
+            </h2>
+
+            <p>
+                VaultSphere is designed around secure and
+                user-specific file management. Your files,
+                backups, and versions remain associated with
+                your account.
+            </p>
+
+            <div class="security-list">
+
+                <div>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>User-specific file access</span>
+                </div>
+
+                <div>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Secure authentication</span>
+                </div>
+
+                <div>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Backup and recovery</span>
+                </div>
+
+                <div>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>File version history</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     HOW IT WORKS
+========================= -->
+
+<section class="how-it-works" id="how-it-works">
+
+    <div class="section-container">
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                SIMPLE WORKFLOW
+            </span>
+
+            <h2>
+                Store your files in
+                <span>three simple steps.</span>
+            </h2>
+
+        </div>
+
+
+        <div class="steps">
+
+            <div class="step">
+
+                <div class="step-number">
+                    01
+                </div>
+
+                <div class="step-icon">
+                    <i class="fa-solid fa-user-plus"></i>
+                </div>
+
+                <h3>Create Account</h3>
+
+                <p>
+                    Create your secure VaultSphere account
+                    and access your personal cloud workspace.
+                </p>
+
+            </div>
+
+
+            <div class="step-line"></div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    02
+                </div>
+
+                <div class="step-icon">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                </div>
+
+                <h3>Upload Files</h3>
+
+                <p>
+                    Upload documents, images, projects,
+                    and other important files.
+                </p>
+
+            </div>
+
+
+            <div class="step-line"></div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    03
+                </div>
+
+                <div class="step-icon">
+                    <i class="fa-solid fa-shield-heart"></i>
+                </div>
+
+                <h3>Stay Protected</h3>
+
+                <p>
+                    Manage backups, versions, and files
+                    from your personal dashboard.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section class="cta">
+
+    <div class="cta-container">
+
+        <div class="cta-icon">
+            <i class="fa-solid fa-cloud"></i>
+        </div>
+
+        <h2>
+            Ready to secure your files?
+        </h2>
+
+        <p>
+            Create your VaultSphere account and start
+            managing your digital files smarter.
+        </p>
+
+        <a href="#"
+           class="primary-button">
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+            Create Your Vault
+
+        </a>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-brand">
+
+            <a href="{{ url_for('home') }}" class="brand">
+
+                <div class="brand-icon">
+                    <i class="fa-solid fa-cloud"></i>
+                </div>
+
+                <div class="brand-text">
+                    <span>Vault</span><strong>Sphere</strong>
+                </div>
+
+            </a>
+
+            <p>
+                Intelligent cloud storage and backup
+                for your digital world.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="#features">Features</a>
+            <a href="#security">Security</a>
+            <a href="#how-it-works">How It Works</a>
+           <a href="{{ url_for('auth.login') }}">
+Login</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 VaultSphere. All rights reserved.
+        </p>
+
+        <p>
+            Built for secure cloud storage.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+const mobileMenu = document.getElementById("mobileMenu");
+const navLinks = document.querySelector(".nav-links");
+
+mobileMenu.addEventListener("click", function () {
+
+    navLinks.classList.toggle("active");
+
+    const icon = mobileMenu.querySelector("i");
+
+    if (navLinks.classList.contains("active")) {
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-xmark");
+    } else {
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+    }
+
+});
+
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        navLinks.classList.remove("active");
+
+        const icon = mobileMenu.querySelector("i");
+
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+
+    });
+
+});
+
+
+/* Smooth scrolling */
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+    anchor.addEventListener("click", function (event) {
+
+        const target = document.querySelector(
+            this.getAttribute("href")
+        );
+
+        if (target) {
+
+            event.preventDefault();
+
+            target.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>

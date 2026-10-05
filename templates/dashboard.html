@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | VaultSphere</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+             {% include 'components/sidebar.html' %}
+
+    <!-- SIDEBAR -->
+
+  
+
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <span class="welcome-label">
+                    VAULTSPHERE
+                </span>
+
+                <h1>Dashboard</h1>
+
+            </div>
+
+
+            <div class="user-area">
+
+                <div class="user-avatar">
+                    {{ user_name[0]|upper }}
+                </div>
+
+                <div class="user-details">
+
+                    <strong>
+                        {{ user_name }}
+                    </strong>
+
+                    <span>
+                        {{ user_email }}
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- WELCOME -->
+
+        <section class="welcome-card">
+
+            <div>
+
+                <span class="small-label">
+                    YOUR CLOUD WORKSPACE
+                </span>
+
+                <h2>
+                    Welcome back,
+                    {{ user_name }} 👋
+                </h2>
+
+                <p>
+                    Manage your files, backups and versions
+                    from one secure workspace.
+                </p>
+
+            </div>
+
+            <a href="#"
+               class="upload-button">
+
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                Upload File
+
+            </a>
+
+        </section>
+
+
+        <!-- STATISTICS -->
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    <i class="fa-solid fa-folder"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Files
+                    </span>
+
+                    <strong>
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon cyan">
+                    <i class="fa-solid fa-database"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        Storage Used
+                    </span>
+
+                    <strong>
+                        0 MB
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        Backups
+                    </span>
+
+                    <strong>
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        Versions
+                    </span>
+
+                    <strong>
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTENT GRID -->
+
+        <section class="content-grid">
+
+            <div class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>
+                            Recent Files
+                        </h3>
+
+                        <p>
+                            Your latest uploaded files
+                        </p>
+
+                    </div>
+
+                    <a href="#">
+                        View All
+                    </a>
+
+                </div>
+
+
+                <div class="empty-state">
+
+                    <div class="empty-icon">
+                        <i class="fa-solid fa-folder-open"></i>
+                    </div>
+
+                    <h4>
+                        No files yet
+                    </h4>
+
+                    <p>
+                        Upload your first file to start
+                        using VaultSphere.
+                    </p>
+
+                    <a href="#"
+                       class="empty-button">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        Upload File
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>
+                            Storage
+                        </h3>
+
+                        <p>
+                            Your cloud usage
+                        </p>
+
+                    </div>
+
+                    <i class="fa-solid fa-cloud"></i>
+
+                </div>
+
+
+                <div class="storage-display">
+
+                    <div class="storage-circle">
+
+                        <div>
+                            <strong>0%</strong>
+                            <span>Used</span>
+                        </div>
+
+                    </div>
+
+                    <div class="storage-info">
+
+                        <strong>
+                            0 MB
+                        </strong>
+
+                        <span>
+                            of 10 GB used
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUICK ACTIONS -->
+
+        <section class="quick-section">
+
+            <h3>
+                Quick Actions
+            </h3>
+
+            <div class="quick-grid">
+
+                <a href="#" class="quick-card">
+
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                    <div>
+                        <strong>Upload File</strong>
+                        <span>Add a new file</span>
+                    </div>
+
+                </a>
+
+
+                <a href="#" class="quick-card">
+
+                    <i class="fa-solid fa-folder-plus"></i>
+
+                    <div>
+                        <strong>Create Folder</strong>
+                        <span>Organize your files</span>
+                    </div>
+
+                </a>
+
+
+                <a href="#" class="quick-card">
+
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                    <div>
+                        <strong>AI Assistant</strong>
+                        <span>Analyze your documents</span>
+                    </div>
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>

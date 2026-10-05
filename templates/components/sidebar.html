@@ -1,0 +1,123 @@
+<!-- =========================
+     COMMON VAULTSPHERE SIDEBAR
+========================= -->
+
+<aside class="sidebar">
+
+    <!-- BRAND -->
+
+    <a href="{{ url_for('dashboard.dashboard') }}"
+       class="logo">
+
+        <div class="logo-icon">
+            <i class="fa-solid fa-cloud"></i>
+        </div>
+
+        <span>
+            Vault<strong>Sphere</strong>
+        </span>
+
+    </a>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="sidebar-nav">
+
+        <!-- Dashboard -->
+
+        <a href="{{ url_for('dashboard.dashboard') }}"
+           class="active">
+
+            <i class="fa-solid fa-chart-pie"></i>
+
+            <span>Dashboard</span>
+
+        </a>
+
+
+        <!-- My Files -->
+
+       <a href="{{ url_for('files.files') }}"
+   class="{% if request.endpoint == 'files.files' %}active{% endif %}">
+
+    <i class="fa-solid fa-folder"></i>
+
+    <span>My Files</span>
+
+</a>
+
+
+        <!-- Upload -->
+
+       <a href="{{ url_for('files.files') }}">
+
+    <i class="fa-solid fa-cloud-arrow-up"></i>
+
+    <span>Upload</span>
+
+</a>
+
+        <!-- Versions -->
+
+        <a href="#">
+
+            <i class="fa-solid fa-clock-rotate-left"></i>
+
+            <span>Versions</span>
+
+        </a>
+
+
+        <!-- Backups -->
+
+        <a href="#">
+
+            <i class="fa-solid fa-database"></i>
+
+            <span>Backups</span>
+
+        </a>
+
+
+        <!-- AI Assistant -->
+
+        <a href="#">
+
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+            <span>AI Assistant</span>
+
+        </a>
+
+    </nav>
+
+
+    <!-- BOTTOM NAVIGATION -->
+
+    <div class="sidebar-bottom">
+
+        <!-- Profile -->
+
+        <a href="#">
+
+            <i class="fa-solid fa-user"></i>
+
+            <span>Profile</span>
+
+        </a>
+
+
+        <!-- Logout -->
+
+        <a href="{{ url_for('auth.logout') }}">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            <span>Logout</span>
+
+        </a>
+
+    </div>
+
+</aside>
